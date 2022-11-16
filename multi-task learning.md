@@ -71,12 +71,12 @@ $$\arg \min_{W} \frac{1}{m} \sum_{i=1}^m \frac{1}{n_i}
 ---
 **model 4**
 We consider each task to be learned by a hypothesis function 
-$$h(x) = w^Tx = u^Tx + v^T \Theta x^T $$
+$$h(x) = w^Tx = u^Tx + v^T \Theta x $$
 where 
 - $u$ and $v$ are vectors that store the difference of this hypothesis' weights to $\Theta$
 - we assume all samples have $p$ dimensions across all tasks. $\Theta$ is a $p$-dimensional parameter subspace, uniform across all hypotheses. we assume hypotheses all have $n_w$ parameters. $\Theta$ is in the form of a matrix in $\mathbb{R}^{n_w \times p}$ and has low rank.
 
-So $\Theta x^T$ is the projection of the sample into the parameter subspace shared across all hypotheses. We then do a further transformation via $u$ and $v$, specific to this hypothesis, to arrive at $w^Tx$.
+So $\Theta x$ is the projection of the sample into the parameter subspace shared across all hypotheses. We then do a further transformation via $u$ and $v$, specific to this hypothesis, to arrive at $w^Tx$.
 
 So consider each $w^i \in W$, has $u^i \in U$ and $v^i \in U$, and is given by
 $$w^i = u^i + \Theta^T v^i $$
