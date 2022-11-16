@@ -6,7 +6,7 @@ it's very hard to derive a causal graph (i.e., a model of causal structure) from
 
 usually we build such a graph modelling causal relationships using reasonable assumptions/heuristics.
 
-then we can start to answer 'what if' questions about varying causal factors, i.e. produce estimations of the scale of casual effect from these scenarios, from observational data. this is called **causal inference**.
+then we can start to answer 'what if' questions about varying causal factors, i.e. produce estimations of the scale of causal effect from these 'what if' scenarios, from observational data. this is called **causal inference**.
 
 assuming markov conditions to hold, lets us transform a graph into an expression for the joint probability distribution of all the graph variables, e.g. $P(X, Y, Z$). applying such a 'markov decomposition' risks less redundant modelling of $P(X, Y, Z)$, compared to applying probability chain rule on all variables, as you would when making no assumptions.
 
