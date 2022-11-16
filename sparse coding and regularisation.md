@@ -1,21 +1,20 @@
 # sparse coding and regularisation
 
-*maybe watch this lec if time.*
-
 See [[dictionary learning and NMF]].
 
 We want
 - dictionary to be overcomplete
 - representation to be sparse (i.e. few non-zero values)
 
-*not sure if this is the idea:*
-We want dictionary to be overcomplete. This leads to there being infinitely many Representations. How do we choose the best one? We want the *sparse* representation, which is often unique.
+*i think this is the idea:*
+We want dictionary $D$ to be overcomplete, to have the best chance of containing basis for whole domain of samples. 
+However, there are naturally infinitely many solutions for the representation $\alpha_i \in R$ for each sample $x_i \in X$. How do we choose the best one? We want the *sparse* representation, which is often unique.
 
 benefits of sparsity:
-- parsimony: spare representations are short and highlight the essential features, making them easy to describe.
-- denoising: if a signal is a mixture of noise and true signal, sparsity can be considered an approximation of true signal.
-- data compression
-- compressed sensing: can reduce amount of measurements needed to construct a signal, if we know its sparse basis. basis can be learned via dictionary learning.
+- parsimony: sparse representations are short and highlight the essential features, making them easy to describe.
+- denoising: if a signal is a mixture of noise and true signal, the sparse representation can be considered an approximation of true signal.
+- data compression: sparse representation allows data compression.
+- compressed sensing: we can reduce the amount of types of measurements needed to construct a signal, if we know its sparse basis. basis can be learned via dictionary learning.
 
 **$\ell_p$ norm**:
 

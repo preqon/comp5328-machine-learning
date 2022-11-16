@@ -29,7 +29,7 @@ Once we have local minimum solutions for $D$ and $R$ we have
 $$X \approx D^*R^* = (D^*A)(A^{-1}R^*) $$
 We sometimes normalise each column of $D$.
 
-### principle components analysis
+## principle components analysis
 
 - special requirement: columns of $D$ are orthonormal to eachother.
 
@@ -47,12 +47,12 @@ $$ \frac{1}{m} \sum_{i=1}^m (x_i - \bar{x}) (x_i - \bar{x})^T $$
 
 So we optimise such that each $w$ maximises weighted covariance between pairs of dimensions. The basis vectors found can be thought of as pushing samples' dimensions apart optimally. It can then be shown that each $w$ is exactly the leading eigenvectors of $C$ with the largest eigenvalues.
 
-### singular value decomposition
+## singular value decomposition
 
 - data samples are projected, using the left singular vectors of $X$, that have the largest singular values. 
 - these left singular vectors turn out to be the eigenvectors of $XX^T$.
 
-### k-means clustering
+## k-means clustering
 
 Finds $k$ number of clusters in data.
 Each cluster can be thought of as a column in $D$; each column in R is then 1-hot.
