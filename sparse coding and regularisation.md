@@ -11,6 +11,12 @@ We want
 *not sure if this is the idea:*
 We want dictionary to be overcomplete. This leads to there being infinitely many Representations. How do we choose the best one? We want the *sparse* representation, which is often unique.
 
+benefits of sparsity:
+- parsimony: spare representations are short and highlight the essential features, making them easy to describe.
+- denoising: if a signal is a mixture of noise and true signal, sparsity can be considered an approximation of true signal.
+- data compression
+- compressed sensing: can reduce amount of measurements needed to construct a signal, if we know its sparse basis. basis can be learned via dictionary learning.
+
 **$\ell_p$ norm**:
 
 $$ || \alpha ||_p = \biggl( \sum_{j=1}^k |\alpha_j|^p \biggr) ^ {1/p}$$
