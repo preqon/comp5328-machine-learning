@@ -4,7 +4,7 @@ See [[dictionary learning and NMF]].
 
 We want
 - dictionary to be overcomplete
-- representation to be sparse (i.e. few non-zero values)
+- representation to be sparse (i.e. few non-zero values, most elements are zero)
 
 *i think this is the idea:*
 We want dictionary $D$ to be overcomplete, to have the best chance of containing basis for whole domain of samples. 
@@ -28,6 +28,7 @@ Using $\ell_0$ norm we optimise both
 \forall i, ||\alpha||_0 < L$$
 2.  $$ \min_{\alpha} || \alpha||_0 \quad \text{s.t. }
 || X - D \alpha ||_F^2 \le \epsilon$$
+However $\ell_0$ is non-differentiable. We can use $\ell_1$ as a surrogate.
 Using $l_1$ norm we optimise both
 1. $$ \min_{\alpha} || \alpha||_1 \quad \text{s.t. }
 || X - D \alpha ||_F^2 \le \epsilon $$

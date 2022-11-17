@@ -42,9 +42,13 @@ the above formulation of the markov condition, for a variable $X_i$, is called a
 
 > for three disjoint sets of variables $\mathbf{X, Y, S}$ the set $\mathbf{X}$ is d-separated from $\mathbf{Y}$, conditional on $\mathbf{S}$ iff all paths between any member of $\mathbf{X}$ and any member of $\mathbf{Y}$ are blocked by $\mathbf{S}$.
 
+**path:** 'path', in the global condition is used to mean any connection, regardless of direction in the causal graph.
+
 > a path $q$ is blocked by $\mathbf{S}$ if 
 > 1. $q$ contains a chain $i \to m \to j$ or a fork $i \leftarrow m \to j$ where $m$ is in $\mathbf{S}$
 > 2. $q$ contains a collider $i \to m \leftarrow j$ such that $m$ is **not** in $\mathbf{S}$, and **no descendant** of $m$ is in $\mathbf{S}$
+
+note for the path to be blocked, $S$ just needs to satisfy one of the above two conditions.
 
 We use this notation to say $\mathbf{S}$ d-separates $\mathbf{X}$ and $\mathbf{Y}$.
 $$ (\mathbf{X} \perp\!\!\!\perp \mathbf{Y} | \mathbf{S}) $$

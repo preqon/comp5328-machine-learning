@@ -110,7 +110,7 @@ $$ f(x) = f(a) + f'(a)(x - a) + \dots +
 h_k(x) \cdot (x - a)^k$$
 and $\lim_{x \to a} h_k(x) = 0$ .
 
-*You should be able to write out the Taylor series of a satisfying function at any point $a$, for some $k$. Then write as $x$ approaches $a$, $h_k(x)$ approaches zero faster than $(x-a)^k$ does. Write this using small-o notation. 
+*You should be able to write out the Taylor series of a satisfying function at some point $a$, for some $k$. Then write as $x$ approaches $a$, $h_k(x)$ approaches zero faster than $(x-a)^k$ does. Write this using small-o notation. 
 i.e. just turn the last term from $h_k(x)(x - a)^k$ into $o((x-a)^k)$*
 
 **Small-o notation**:
