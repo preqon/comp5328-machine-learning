@@ -4,8 +4,8 @@ A dictionary provides a set of basis vectors, used to describe the possible samp
 
 An approximation of the original data matrix $X$ is given in the form 
 $$ X \approx D R $$
-- $D$ columns can interpreted as the basis vectors
-- $R$ columns can interpreted as projections of samples from $X$ into a low dimensional subspace, via basis vectors. $$R = D^TX$$
+- Dictionary $D$ columns can be interpreted as the basis vectors
+- Representation $R$ columns can be interpreted as projections of samples from $X$ into a low dimensional subspace, via basis vectors. $$R \approx D^TX$$
 - So the matrix product $DR$ approximates each sample with some linear combination of basis vectors.
 
 Let's say $R$ was one dimension only, the vector $\alpha$. 
@@ -13,8 +13,8 @@ Consider some sample $x \in \mathbb{R}^d$ , and $D \in \mathbb{R}^{d \times k}$
 
 $$\alpha ^{*} = \arg \min_{\alpha \in \mathbb{R}^k}
 || x - D\alpha ||^2$$
-- where $|| x ||^2 = \sqrt{x^Tx}$ is L2 Norm.
-
+- where $|| x || = \sqrt{x^Tx}$ is $\ell_2$ Norm. ($||x||^2$ is the $\ell_2$ norm squared).
+ 
 So the optimal $\alpha$, once combined with $D$ should closely reproduce $x$.
 
 So for training sample set $X$, we would like to optimise
@@ -22,6 +22,8 @@ So for training sample set $X$, we would like to optimise
 $$\arg \min_{D, R} = || X - DR ||_F^2$$
 - where R contains $\alpha_i$ for each $x_i$.
 - $||X||_F$ is the Frobenius norm given by $$\sqrt{\sum_{i=1}^d \sum_{j=1}^n X^2_{i,j}}.$$
+($||X||_F^2$ is the Frobenius norm squared)
+
 Note, the objective is convex with respect to either $D$ or $R$ but not to both.
 We can fix one and solve for the other.
 
@@ -55,8 +57,8 @@ So we optimise such that each $w$ maximises weighted covariance between pairs of
 ## k-means clustering
 
 Finds $k$ number of clusters in data.
-Each cluster can be thought of as a column in $D$; each column in R is then 1-hot.
-A sample which is the mean of a cluster can be produced as $D\alpha$.
+Each cluster can be thought of as a column in $D$; each column in $R$ is then 1-hot.
+A cluster's 'archetypal sample', i.e. the mean of a cluster, is produced as $D\alpha$.
 
 ## NMF
 
@@ -72,11 +74,13 @@ $$\arg \min_{D, R} = || X - DR ||_F^2$$
 
 but using a multiplicative update rule, with the NMF constraints.
 - this update rule makes the objective non-increasing
-- the objective will not change (stays invariant) if and only if updated values for D and R are 'at a stationary point of the distance' (?)
+- the objective will not change (stays invariant) if and only if updated values for D and R are 'at a stationary point of distance to $X$', i.e. iff their approximation of $X$ is no more or less accurate.
 
-Note that the objective above is Euclidean distance loss on approximation error $(E_{ij} = X_{ij} - \sum_{k=1}^K D_{ik}R_{jk})$ 
-$$\sum_{i=1}^{n} \sum_{j=1}^{m} || \space X_{ij} - (DR)_{ij} \space || \thinspace ^2 $$
-A local minimum can be found, by first randomising $D$ and $R$ then iterating over the following multiplicative update rules:
+Note that the objective above is really using Euclidean distance to measure loss between $X$ and $DR$. 
+(Consider Euclidean loss for each sample stored in $E$ where $E_{ij} = X_{ij} - \sum_{k=1}^K D_{ik}R_{jk}$. The objective sums all these.)
+This is more easily seen when the objective is written as
+$$\sum_{i=1}^N \sum_{j=1}^M (X_{ij} - (DR)_{ij})^2 $$
+A local minimum in the Euclidean distance can be found, by first randomising $D$ and $R$ then iterating over the following multiplicative update rules:
 $$R_{ij} \leftarrow R_{ij} \frac{(D^TX)_{ij}} {(D^TDR)_{ij}} $$
 $$D_{ij} \leftarrow D_{ij} \frac{(XR^T)_{ij}} {(DRR^T)_{ij}} $$
 
